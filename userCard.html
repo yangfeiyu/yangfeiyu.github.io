@@ -3,6 +3,7 @@
 <head>
 	<title>用户卡片</title>
 	<meta charset="utf-8">
+
 </head>
 <body>
 	<div 
@@ -18,12 +19,13 @@
 	>
 		点击播放语音
 	</button>
+	
 	<script type="text/javascript">
 		function changUser(){
 			window.runtuNative.playLocalAccent(16275);
 		}
 		function playFinishedCallback(){
-			document.querySeletor("#button").style.background = purple;
+			alert("播放结束")
 		}
 	</script>
 </body>
