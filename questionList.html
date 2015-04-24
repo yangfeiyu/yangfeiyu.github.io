@@ -35,15 +35,26 @@
         // alert("r:"+r);
         // alert("qid:"+r['qid']+" selectedItemIndex:"+r['selectedItemIndex']);
         var title = document.getElementsByTagName("h3")[0]
-        title.innerHTML =  r["title"]+" 题目ID："+r["qid"]
+        title.innerHTML =  r["title"]+" 题目ID："+r["qid"] +" 是否答过："+r["shouldSelect"]
         // alert(title.innerHTML)
 
 		var li = document.getElementsByTagName('li');
 		for (var i = 0; i < li.length; i++) {
 			li[i].index = i;
-			if (i == r["selectedItemIndex"]) {
-				li[i].style.color='#cccc00';
-			};
+			li[i].onclick = function(){
+				if (0 == r["shouldSelect"]) {
+					alert("你已经回答过该题目了")
+					return
+				}
+
+				for (var i = 0; i < li.length; i++) {
+					li[i].style.background = ""
+				}
+
+				this.style.background = "#cccccc"
+				window.runtuNative.selectItem( { "qid":r["qid"], "seletedItemIndex":i} ) 
+			}
+			
 		}
 
 
