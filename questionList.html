@@ -30,7 +30,7 @@
 
         var Request = new Object();
         Request = GetRequest();
-        var r = Request['r'];
+        var r = JSON.parse(Request['r']);
         alert("r:"+r);
         alert("qid:"+r['qid']+" selectedItemIndex:"+r['selectedItemIndex']);
 	</script>
