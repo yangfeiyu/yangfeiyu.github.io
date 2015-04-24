@@ -6,7 +6,7 @@
 
 </head>
 <body>
-	<h3>题目：哈哈哈哈哈哈哈哈</h3>
+	<h3 id="title">题目：哈哈哈哈哈哈哈哈</h3>
 	<ul>
 		<li>哈哈哈哈</li>
 		<li>哈哈哈哈</li>
@@ -31,10 +31,21 @@
         var Request = new Object();
         Request = GetRequest();
         var r = JSON.parse(Request['r']);
-        // var r = JSON.parse('{"qid":1, "selectedItemIndex":2}');
-        // var r = {'qid':1, 'selectedItemIndex':2};
-        alert("r:"+r);
-        alert("qid:"+r['qid']+" selectedItemIndex:"+r['selectedItemIndex']);
+
+        // alert("r:"+r);
+        // alert("qid:"+r['qid']+" selectedItemIndex:"+r['selectedItemIndex']);
+        var title = document.getElementsByTagName("h3")
+        title.innerHTML =  r["title"]+" 题目ID："+r["qid"]
+
+		var li = document.getElementsByTagName('li');
+		for (var i = 0; i < li.length; i++) {
+			li[i].index = i;
+			if (i == r["selectedItemIndex"]) {
+				li[i].style.color='#cccc00';
+			};
+		}
+
+
 	</script>
 </body>
 </html>
