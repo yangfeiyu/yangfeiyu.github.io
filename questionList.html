@@ -32,11 +32,11 @@
         Request = GetRequest();
         var r = JSON.parse(Request['r']);
 
-        alert("r:"+r);
-        alert("qid:"+r['qid']+" selectedItemIndex:"+r['selectedItemIndex']);
+        // alert("r:"+r);
+        // alert("qid:"+r['qid']+" selectedItemIndex:"+r['selectedItemIndex']);
         var title = document.getElementsByTagName("h3")[0]
         title.innerHTML =  r["title"]+" 题目ID："+r["qid"]
-        alert(title.innerHTML)
+        // alert(title.innerHTML)
 
 		var li = document.getElementsByTagName('li');
 		for (var i = 0; i < li.length; i++) {
