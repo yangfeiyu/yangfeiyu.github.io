@@ -6,7 +6,7 @@
 
 </head>
 <body>
-	<h3 id="title">题目：哈哈哈哈哈哈哈哈</h3>
+	<h3 id="title"></h3>
 	<ul>
 		<li>哈哈哈哈</li>
 		<li>哈哈哈哈</li>
@@ -34,7 +34,7 @@
 
         // alert("r:"+r);
         // alert("qid:"+r['qid']+" selectedItemIndex:"+r['selectedItemIndex']);
-        var title = document.getElementsByTagName("h3")
+        var title = document.getElementsByTagName("h3")[0]
         title.innerHTML =  r["title"]+" 题目ID："+r["qid"]
 
 		var li = document.getElementsByTagName('li');
