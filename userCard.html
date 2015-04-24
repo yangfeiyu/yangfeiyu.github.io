@@ -13,19 +13,27 @@
 	</div>
 
 	<button 
-		style="width:100px;height:50px;background:green;position:absolute;top:230px;left:0px;font-size:15px"
+		style="width:50px;height:50px;background:green;position:absolute;top:230px;left:0px;font-size:15px"
 		onclick="window.runtuNative.playLocalAccent({'uid':15963, 'callback':'playFinishedCallback'})"
 		id="button"
 	>
-		播放语音
+		播放
 	</button>
 
 	<button 
-		style="width:100px;height:50px;background:green;position:absolute;top:230px;left:150px;font-size:15px"
+		style="width:50px;height:50px;background:green;position:absolute;top:230px;left:80px;font-size:15px"
 		onclick="window.runtuNative.startRecord({'callback':'recordFinishedCallback'})"
 		id="button"
 	>
-		录制翻译语音
+		录制
+	</button>
+
+	<button 
+		style="width:50px;height:50px;background:green;position:absolute;top:230px;left:180px;font-size:15px"
+		onclick="window.runtuNative.sendTranslateText({'text':'hehe','uid':16275})"
+		id="button"
+	>
+		发送
 	</button>
 
 	<input type="text" id="textview" style="position:absolute;top:300px;left:0px;font-size:15px">
