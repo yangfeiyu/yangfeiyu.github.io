@@ -71,7 +71,7 @@
 			var button = document.getElementById('play_btn')
 			button.onclick = function(e) {
 				e.preventDefault()
-				var data = {"fn":"mediaPlay","url":"http://iorcas-upload.b0.upaiyun.com/b565ab9abeb37a6d4c1f657c46776a12e423b8bde9bfbfd7e9409b23b23aed91.aac"}
+				var data = {"fn":"mediaPlay","requiredVoice":1,url":"http://iorcas-upload.b0.upaiyun.com/b565ab9abeb37a6d4c1f657c46776a12e423b8bde9bfbfd7e9409b23b23aed91.aac"}
 				bridge.send(data, function(responseData) {
 					var responseData = JSON.parse(responseData)
 					alert("播放结束的回调:"+responseData+" 状态是："+responseData["state"])
