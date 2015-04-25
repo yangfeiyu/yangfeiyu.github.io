@@ -51,6 +51,7 @@
 		}
 		
 		connectWebViewJavascriptBridge(function(bridge) {
+			alert(bridge)
 			var uniqueId = 1
 			function log(message, data) {
 				var log = document.getElementById('log')
