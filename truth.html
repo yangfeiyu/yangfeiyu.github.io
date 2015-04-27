@@ -9,7 +9,7 @@
 	<div 
 		style="width:200px;height:20px;background:red;font-size:20px"
 	>
-		真心话游戏
+		真心话游戏!!
 	</div>
 
 	<button 
@@ -81,12 +81,14 @@
 			yes_btn.onclick = function(e) {
 				e.preventDefault()
 				var data = {"fn":"sendMessageCard","message":"你选择了是","selectIndex":0}
-				bridge.send(data,callBack)
+				bridge.send(data, function(responseData) {
+				})
 			}
 			no_btn.onclick = function(e) {
 				e.preventDefault()
 				var data = {"fn":"sendMessageCard","message":"你选择了不是","selectIndex":1}
-				bridge.send(data,callBack)
+				bridge.send(data, function(responseData) {
+				})
 			}
 		})
 	</script>
