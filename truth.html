@@ -1,0 +1,96 @@
+<!DOCTYPE>
+<html>
+<head>
+	<title>用户卡片</title>
+	<meta charset="utf-8">
+
+</head>
+<body>
+	<div 
+		style="width:300px;height:200px;background:red;font-size:20px"
+	>
+		真心话游戏
+	</div>
+
+	<button 
+		style="width:50px;height:50px;background:green;position:absolute;top:230px;left:0px;font-size:15px"
+		id="yes_btn"
+	>
+		是
+	</button>
+
+	<button 
+		style="width:50px;height:50px;background:green;position:absolute;top:230px;left:80px;font-size:15px"
+		id="no_btn"
+	>
+		否
+	</button>
+
+
+	<input type="text" id="textview" style="position:absolute;top:300px;left:0px;font-size:15px">
+
+	<script type="text/javascript">
+		window.onerror = function(err) {
+			log('window.onerror: ' + err)
+		}
+
+		function GetRequest() {
+            var url = location.search; //获取url中"?"符后的字串   
+            var theRequest = new Object();
+            if (url.indexOf("?") != -1) {
+                var str = url.substr(1);
+                strs = str.split("&");
+                for (var i = 0; i < strs.length; i++) {
+                    theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+                }
+            }
+            return theRequest;
+        }
+
+        var Request = new Object();
+        Request = GetRequest();
+        var q = JSON.parse(Request['q']);
+        alert(q)
+		
+		function connectWebViewJavascriptBridge(callback) {
+			if (window.WebViewJavascriptBridge) {
+				callback(WebViewJavascriptBridge)
+			} else {
+				document.addEventListener('WebViewJavascriptBridgeReady', function() {
+					callback(WebViewJavascriptBridge)
+				}, false)
+			}
+		}
+		
+		connectWebViewJavascriptBridge(function(bridge) {
+			var uniqueId = 1
+			function log(message, data) {
+				var log = document.getElementById('log')
+				var el = document.createElement('div')
+				el.className = 'logLine'
+				el.innerHTML = uniqueId++ + '. ' + message + ':<br/>' + JSON.stringify(data)
+				if (log.children.length) { log.insertBefore(el, log.children[0]) }
+				else { log.appendChild(el) }
+			}
+			bridge.init(function(message, responseCallback) {
+				log('JS got a message', message)
+				var data = { 'Javascript Responds':'Wee!' }
+				log('JS responding with', data)
+				responseCallback(data)
+			})
+
+			var yes_btn = document.getElementById('yes_btn')
+			var no_btn = document.getElementById('no_btn')
+			yes_btn.onclick = function(e) {
+				e.preventDefault()
+				var data = {"fn":"mediaPlay","requiredVoice":0,"url":"http://iorcas-upload.b0.upaiyun.com/b565ab9abeb37a6d4c1f657c46776a12e423b8bde9bfbfd7e9409b23b23aed91.aac"}
+				bridge.send(data, function(responseData) {
+					// var responseData = JSON.parse(responseData)
+					alert("播放结束的回调:"+responseData+" 状态是："+responseData["state"])
+				})
+			}
+			
+		})
+	</script>
+</body>
+</html>
