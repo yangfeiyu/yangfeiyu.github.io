@@ -90,13 +90,15 @@
 				})
 			}
 			
+			function leftButtonAction(){
+				var data = {"fn":"dismissPopupTextView"}
+				bridge.send(data,callBack)
+			}
+			function rightButtonAction(){
+				alert("发送！")
+			}
 		})
-		function leftButtonAction(){
-			alert("leftButtonAction")
-		}
-		function rightButtonAction(){
-			alert("rightButtonAction")
-		}
+		
 	</script>
 </body>
 </html>
