@@ -33,7 +33,7 @@
 		发送
 	</button>
 	<button 
-		style="width:50px;height:150px;background:green;position:absolute;top:230px;left:150px;font-size:15px"
+		style="width:150px;height:50px;background:green;position:absolute;top:230px;left:150px;font-size:15px"
 		id="textview"
 	>
 		弹出文本框
@@ -64,10 +64,16 @@
 		发送老乡碰老乡卡片
 	</button>
 	<button 
-		style="width:150px;height:50px;background:blue;position:absolute;top:410px;left:0;font-size:15px"
+		style="width:150px;height:50px;background:pink;position:absolute;top:410px;left:0;font-size:15px"
 		id="toast"
 	>
 		弹出Toast
+	</button>
+	<button 
+		style="width:150px;height:50px;background:yellow;position:absolute;top:350px;left:160;font-size:15px"
+		id="chatUser"
+	>
+		跳转到用户聊天页面
 	</button>
 
 	<script type="text/javascript">
@@ -162,6 +168,14 @@
 			toast.onclick = function(e) {
 				e.preventDefault()
 				var data = {"fn":"showToast","message":"你变猪头了"}
+				bridge.send(data, function(responseData) {
+				})
+			}
+
+			var chatUser = document.getElementById('chatUser')
+			chatUser.onclick = function(e) {
+				e.preventDefault()
+				var data = {"fn":"chatUser","chatUsername":"qhc5xch9wgjm8h3q"}
 				bridge.send(data, function(responseData) {
 				})
 			}
