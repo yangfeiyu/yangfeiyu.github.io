@@ -130,7 +130,7 @@
 				e.preventDefault()
 				var data = {"fn":"finishRecord"}
 				bridge.send(data, function(responseData) {
-					// var responseData = JSON.parse(responseData)
+					var responseData = JSON.parse(responseData)
 					alert("录音url为："+responseData)
 				})
 			}
