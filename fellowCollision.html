@@ -94,8 +94,9 @@
 		})
 
 		function leftButtonAction(){
+			alert(WebViewJavascriptBridge)
 			var data = {"fn":"dismissPopupTextView"}
-			window.WebViewJavascriptBridge.send(data,callBack)
+			WebViewJavascriptBridge.send(data,callBack)
 		}
 		function rightButtonAction(){
 			alert("发送！")
