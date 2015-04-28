@@ -85,7 +85,7 @@
 			var textview = document.getElementById('textview')
 			textview.onclick = function(e) {
 				e.preventDefault()
-				var data = {"fn":"popupTextView","title":"写小纸条喽","leftButtonText":"狠心拒绝","rightButtonText":"立即发送","leftButtonAction":"leftButtonAction","rightButtonAction":"rightButtonAction"}
+				var data = {"fn":"showPopupTextView","title":"写小纸条喽","leftButtonText":"狠心拒绝","rightButtonText":"立即发送","leftButtonAction":"leftButtonAction","rightButtonAction":"rightButtonAction"}
 				bridge.send(data, function(responseData) {
 				})
 			}
