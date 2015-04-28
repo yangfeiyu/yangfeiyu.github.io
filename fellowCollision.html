@@ -89,17 +89,15 @@
 				bridge.send(data, function(responseData) {
 				})
 			}
-
-			function leftButtonAction(){
-				var data = {"fn":"dismissPopupTextView"}
-				bridge.send(data,callBack)
-			}
-			function rightButtonAction(){
-				alert("发送！")
-			}
-			
 		})
-
+		function leftButtonAction(){
+			var data = {"fn":"dismissPopupTextView"}
+			WebViewJavascriptBridge.send(data,function(responseData) {
+			})
+		}
+		function rightButtonAction(){
+			alert("发送！")
+		}
 		
 		
 	</script>
