@@ -40,22 +40,28 @@
 	</button>
 
 	<button 
-		style="width:50px;height:50px;background:green;position:absolute;top:280px;left:0;font-size:15px"
+		style="width:50px;height:50px;background:green;position:absolute;top:290px;left:0;font-size:15px"
 		id="start_record"
 	>
 		录音
 	</button>
 	<button 
-		style="width:50px;height:50px;background:green;position:absolute;top:280px;left:50px;font-size:15px"
+		style="width:50px;height:50px;background:green;position:absolute;top:290px;left:50px;font-size:15px"
 		id="cancel_record"
 	>
 		取消
 	</button>
 	<button 
-		style="width:50px;height:50px;background:green;position:absolute;top:280px;left:100px;font-size:15px"
+		style="width:50px;height:50px;background:green;position:absolute;top:290px;left:100px;font-size:15px"
 		id="finish_record"
 	>
 		完成
+	</button>
+	<button 
+		style="width:150px;height:50px;background:yellow;position:absolute;top:350px;left:0;font-size:15px"
+		id="send_meet_card"
+	>
+		发送老乡碰老乡卡片
 	</button>
 
 	<script type="text/javascript">
@@ -125,13 +131,24 @@
 				})
 			}
 
+			var voiceUri;
 			var finish_record = document.getElementById('finish_record')
 			finish_record.onclick = function(e) {
 				e.preventDefault()
 				var data = {"fn":"finishRecord"}
 				bridge.send(data, function(responseData) {
 					var responseData = JSON.parse(responseData)
-					alert("录音url为："+responseData)
+					voiceUri = responseData["url"];
+					alert("录音url为：" + voiceUri)
+				})
+			}
+			
+			var send_meet_card = document.getElementById('send_meet_card')
+			send_meet_card.onclick = function(e) {
+				e.preventDefault()
+				var data = {"fn":"sendMeetCard","targetUser":"fei","transText":"hahaha","transAudio":voiceUri}
+				bridge.send(data, function(responseData) {
+					alert("发送成功！")
 				})
 			}
 		})
