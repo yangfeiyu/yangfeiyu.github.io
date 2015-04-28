@@ -14,22 +14,60 @@
 
 	<button 
 		style="width:50px;height:50px;background:green;position:absolute;top:60px;left:20px;font-size:15px"
-		onclick="window.runtuNative.isFellow()"
-		id="button"
+		id="yes_btn"
 	>
 		是
 	</button>
 
 	<button 
 		style="width:50px;height:50px;background:green;position:absolute;top:60px;left:70px;font-size:15px"
-		onclick="window.runtuNative.notFellow()"
-		id="button"
+		id="no_btn"
 	>
 		否
 	</button>
 
 	<script type="text/javascript">
+		window.onerror = function(err) {
+			log('window.onerror: ' + err)
+		}
 		
+		function connectWebViewJavascriptBridge(callback) {
+			if (window.WebViewJavascriptBridge) {
+				callback(WebViewJavascriptBridge)
+			} else {
+				document.addEventListener('WebViewJavascriptBridgeReady', function() {
+					callback(WebViewJavascriptBridge)
+				}, false)
+			}
+		}
+		
+		connectWebViewJavascriptBridge(function(bridge) {
+			var uniqueId = 1
+			bridge.init(function(message, responseCallback) {
+				log('JS got a message', message)
+				var data = { 'Javascript Responds':'Wee!' }
+				log('JS responding with', data)
+				responseCallback(data)
+			})
+
+
+			var yes_btn = document.getElementById('yes_btn')
+			yes_btn.onclick = function(e) {
+				e.preventDefault()
+				var data = {"fn":"sendMessageCard","message":"咱们俩个是老乡哦"}
+				bridge.send(data, function(responseData) {
+				})
+			}
+
+			var no_btn = document.getElementById('no_btn')
+			no_btn.onclick = function(e) {
+				e.preventDefault()
+				var data = {"fn":"sendMessageCard","message":"我根本不认识你"}
+				bridge.send(data, function(responseData) {
+				})
+			}
+
+		})
 	</script>
 </body>
 </html>
