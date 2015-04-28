@@ -27,6 +27,32 @@
 	</button>
 
 	<script type="text/javascript">
+		function GetRequest() {
+            var url = location.search; //获取url中"?"符后的字串   
+            var theRequest = new Object();
+            if (url.indexOf("?") != -1) {
+                var str = url.substr(1);
+                strs = str.split("&");
+                for (var i = 0; i < strs.length; i++) {
+                    theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+                }
+            }
+            return theRequest;
+        }
+
+        var Request = new Object();
+        Request = GetRequest();
+        var targetUser = JSON.parse(Request['targetUser']);
+        var uid = Request['uid'];
+
+        if (targetUser.uid == uid) {
+        	document.getElementById('yes_btn').style.visibility="hidden"; 
+        	document.getElementById('no_btn').style.visibility="hidden"; 
+        } else {
+        	document.getElementById('yes_btn').style.visibility="visible"; 
+        	document.getElementById('no_btn').style.visibility="visible"; 
+        }
+
 		window.onerror = function(err) {
 			log('window.onerror: ' + err)
 		}
@@ -67,7 +93,6 @@
 				})
 			}
 
-		})
-	</script>
+		})	</script>
 </body>
 </html>
