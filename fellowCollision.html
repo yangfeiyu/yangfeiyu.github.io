@@ -102,16 +102,13 @@
 
 
 			var button = document.getElementById('play_btn')
-			var play_state = document.getElementById('play_state')
 			button.onclick = function(e) {
 				e.preventDefault()
-				var data = {"fn":"mediaPlay","requiredVoice":0,"url":"http://iorcas-upload.b0.upaiyun.com/b565ab9abeb37a6d4c1f657c46776a12e423b8bde9bfbfd7e9409b23b23aed91.aac"}
+				var data = {"fn":"mediaPlay","requiredVoice":0,"url":"http://iorcas-upload.b0.upaiyun.com/b565ab9abeb37a6d4c1f657c46776a12e423b8bde9bfbfd7e9409b23b23aed91.aac","stateChangedCallback":"stateChangedCallback"}
 				bridge.send(data, function(responseData) {
-					var responseData = JSON.parse(responseData)
-					alert("播放结束的回调:"+responseData+" 状态是："+responseData["state"])
-					play_state.innerHTML = "播放状态：" + responseData["state"]
 				})
 			}
+
 
 			var textview = document.getElementById('textview')
 			textview.onclick = function(e) {
@@ -182,6 +179,11 @@
 		}
 		function rightButtonAction(responseData){
 			// alert("发送:"+responseData["text"])
+		}
+
+		function stateChangedCallback(state) {
+			var play_state = document.getElementById('play_state')
+			play_state.innerHTML = "播放状态：" + responseData["state"]
 		}
 		
 		
