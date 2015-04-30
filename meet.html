@@ -83,6 +83,7 @@
 			var yes_btn = document.getElementById('yes_btn')
 			yes_btn.onclick = function(e) {
 				e.preventDefault()
+				alert(1)
 				var data = {"fn":"sendMessageCard","message":"咱们俩个是老乡哦","chatUsername":"qhc5xch9wgjm8h3q"}
 				bridge.send(data, function(responseData) {
 				})
