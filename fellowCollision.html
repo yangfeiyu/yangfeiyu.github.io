@@ -19,7 +19,13 @@
 		播放
 	</button>
 	<button 
-		style="width:150px;height:50px;background:green;position:absolute;top:230px;left:150px;font-size:15px"
+		style="width:100px;height:50px;background:green;position:absolute;top:230px;left:50px;font-size:15px"
+		id="play_state"
+	>
+		播放状态：
+	</button>
+	<button 
+		style="width:150px;height:50px;background:green;position:absolute;top:230px;left:160px;font-size:15px"
 		id="textview"
 	>
 		弹出文本框
@@ -96,12 +102,14 @@
 
 
 			var button = document.getElementById('play_btn')
+			var play_state = document.getElementById('play_state')
 			button.onclick = function(e) {
 				e.preventDefault()
 				var data = {"fn":"mediaPlay","requiredVoice":0,"url":"http://iorcas-upload.b0.upaiyun.com/b565ab9abeb37a6d4c1f657c46776a12e423b8bde9bfbfd7e9409b23b23aed91.aac"}
 				bridge.send(data, function(responseData) {
 					// var responseData = JSON.parse(responseData)
-					alert("播放结束的回调:"+responseData+" 状态是："+responseData["state"])
+					// alert("播放结束的回调:"+responseData+" 状态是："+responseData["state"])
+					play_state.innerHTML = "播放状态：" + responseData["state"]
 				})
 			}
 
