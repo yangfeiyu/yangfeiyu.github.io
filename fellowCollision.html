@@ -182,13 +182,16 @@
 		})
 
 
-		function leftButtonAction(){
+		function leftButtonAction(respon
+			var responseData = JSON.parse(responseData)
+			alert(responseData["text"])
 			var data = {"fn":"dismissPopupTextView"}
 			WebViewJavascriptBridge.send(data,function(responseData) {
 			})
 		}
-		function rightButtonAction(){
-			alert("发送！")
+		function rightButtonAction(responseData){
+			var responseData = JSON.parse(responseData)
+			alert("发送:"+responseData["text"])
 		}
 		
 		
