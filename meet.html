@@ -44,7 +44,6 @@
         Request = GetRequest();
         var targetUser = JSON.parse(Request['targetUser']);
         console.log(targetUser)
-        var uid = Request['uid'];
         document.getElementsByTagName('div')[0].innerHTML = targetUser.nickname;
 
         if (targetUser.uid == uid) {
