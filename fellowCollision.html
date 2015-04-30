@@ -19,16 +19,22 @@
 		播放
 	</button>
 	<button 
-		style="width:100px;height:50px;background:pink;position:absolute;top:230px;left:50px;font-size:12px"
+		style="width:50px;height:50px;background:green;position:absolute;top:230px;left:0px;font-size:15px"
+		id="pause_btn"
+	>
+		暂停
+	</button>
+	<button 
+		style="width:50px;height:50px;background:green;position:absolute;top:230px;left:0px;font-size:15px"
+		id="stop_btn"
+	>
+		停止
+	</button>
+	<button 
+		style="width:100px;height:50px;background:pink;position:absolute;top:230px;left:160px;font-size:12px"
 		id="play_state"
 	>
 		播放状态：
-	</button>
-	<button 
-		style="width:150px;height:50px;background:green;position:absolute;top:230px;left:160px;font-size:15px"
-		id="textview"
-	>
-		弹出文本框
 	</button>
 
 	<button 
@@ -48,6 +54,12 @@
 		id="finish_record"
 	>
 		完成
+	</button>
+	<button 
+		style="width:150px;height:50px;background:green;position:absolute;top:290px;left:160px;font-size:15px"
+		id="textview"
+	>
+		弹出文本框
 	</button>
 	<button 
 		style="width:150px;height:50px;background:yellow;position:absolute;top:350px;left:0;font-size:15px"
@@ -101,14 +113,29 @@
 			})
 
 
-			var button = document.getElementById('play_btn')
-			button.onclick = function(e) {
+			var play_btn = document.getElementById('play_btn')
+			play_btn.onclick = function(e) {
 				e.preventDefault()
 				var data = {"fn":"mediaPlay","requiredVoice":0,"url":"http://iorcas-upload.b0.upaiyun.com/b565ab9abeb37a6d4c1f657c46776a12e423b8bde9bfbfd7e9409b23b23aed91.aac","stateChangedCallback":"stateChangedCallback"}
 				bridge.send(data, function(responseData) {
 				})
 			}
 
+			var pause_btn = document.getElementById('pause_btn')
+			pause_btn.onclick = function(e) {
+				e.preventDefault()
+				var data = {"fn":"mediaPause"}
+				bridge.send(data, function(responseData) {
+				})
+			}
+
+			var stop_btn = document.getElementById('stop_btn')
+			stop_btn.onclick = function(e) {
+				e.preventDefault()
+				var data = {"fn":"mediaStop"}
+				bridge.send(data, function(responseData) {
+				})
+			}
 
 			var textview = document.getElementById('textview')
 			textview.onclick = function(e) {
