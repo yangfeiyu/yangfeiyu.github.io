@@ -144,7 +144,7 @@
 			var send_meet_card = document.getElementById('send_meet_card')
 			send_meet_card.onclick = function(e) {
 				e.preventDefault()
-				var data = {"fn":"sendMeetCard","targetUser":"fei","transText":"hahaha","transAudio":voiceUri}
+				var data = {"fn":"sendMeetCard","chatUsername":"qhc5xch9wgjm8h3q","transText":"hahaha","transAudio":voiceUri}
 				bridge.send(data, function(responseData) {
 					alert("发送成功！")
 				})
