@@ -42,60 +42,61 @@
 
         var Request = new Object();
         Request = GetRequest();
-        var targetUser = JSON.parse(Request['targetUser']);
-        alert("targetUser:"+targetUser)
-        alert("nickname:"+nickname)
-        var uid = Request['uid'];
-        document.getElementsByTagName('div')[0].innerHTML = targetUser.nickname;
+        // var targetUser = JSON.parse(Request['targetUser']);
+        alert("Request:"+Request)
+        // alert("nickname:"+nickname)
+  //       var uid = Request['uid'];
+  //       document.getElementsByTagName('div')[0].innerHTML = targetUser.nickname;
 
-        if (targetUser.uid == uid) {
-        	document.getElementById('yes_btn').style.visibility="hidden"; 
-        	document.getElementById('no_btn').style.visibility="hidden"; 
-        } else {
-        	document.getElementById('yes_btn').style.visibility="visible"; 
-        	document.getElementById('no_btn').style.visibility="visible"; 
-        }
+  //       if (targetUser.uid == uid) {
+  //       	document.getElementById('yes_btn').style.visibility="hidden"; 
+  //       	document.getElementById('no_btn').style.visibility="hidden"; 
+  //       } else {
+  //       	document.getElementById('yes_btn').style.visibility="visible"; 
+  //       	document.getElementById('no_btn').style.visibility="visible"; 
+  //       }
 
-		window.onerror = function(err) {
-			log('window.onerror: ' + err)
-		}
+		// window.onerror = function(err) {
+		// 	log('window.onerror: ' + err)
+		// }
 		
-		function connectWebViewJavascriptBridge(callback) {
-			if (window.WebViewJavascriptBridge) {
-				callback(WebViewJavascriptBridge)
-			} else {
-				document.addEventListener('WebViewJavascriptBridgeReady', function() {
-					callback(WebViewJavascriptBridge)
-				}, false)
-			}
-		}
+		// function connectWebViewJavascriptBridge(callback) {
+		// 	if (window.WebViewJavascriptBridge) {
+		// 		callback(WebViewJavascriptBridge)
+		// 	} else {
+		// 		document.addEventListener('WebViewJavascriptBridgeReady', function() {
+		// 			callback(WebViewJavascriptBridge)
+		// 		}, false)
+		// 	}
+		// }
 		
-		connectWebViewJavascriptBridge(function(bridge) {
-			var uniqueId = 1
-			bridge.init(function(message, responseCallback) {
-				log('JS got a message', message)
-				var data = { 'Javascript Responds':'Wee!' }
-				log('JS responding with', data)
-				responseCallback(data)
-			})
+		// connectWebViewJavascriptBridge(function(bridge) {
+		// 	var uniqueId = 1
+		// 	bridge.init(function(message, responseCallback) {
+		// 		log('JS got a message', message)
+		// 		var data = { 'Javascript Responds':'Wee!' }
+		// 		log('JS responding with', data)
+		// 		responseCallback(data)
+		// 	})
 
 
-			var yes_btn = document.getElementById('yes_btn')
-			yes_btn.onclick = function(e) {
-				e.preventDefault()
-				var data = {"fn":"sendMessageCard","message":"咱们俩个是老乡哦","chatUsername":targetUser.chatUsername}
-				bridge.send(data, function(responseData) {
-				})
-			}
+		// 	var yes_btn = document.getElementById('yes_btn')
+		// 	yes_btn.onclick = function(e) {
+		// 		e.preventDefault()
+		// 		var data = {"fn":"sendMessageCard","message":"咱们俩个是老乡哦","chatUsername":targetUser.chatUsername}
+		// 		bridge.send(data, function(responseData) {
+		// 		})
+		// 	}
 
-			var no_btn = document.getElementById('no_btn')
-			no_btn.onclick = function(e) {
-				e.preventDefault()
-				var data = {"fn":"sendMessageCard","message":"我根本不认识你","chatUsername":targetUser.chatUsername}
-				bridge.send(data, function(responseData) {
-				})
-			}
+		// 	var no_btn = document.getElementById('no_btn')
+		// 	no_btn.onclick = function(e) {
+		// 		e.preventDefault()
+		// 		var data = {"fn":"sendMessageCard","message":"我根本不认识你","chatUsername":targetUser.chatUsername}
+		// 		bridge.send(data, function(responseData) {
+		// 		})
+		// 	}
 
-		})	</script>
+		// })	
+		</script>
 </body>
 </html>
