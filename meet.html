@@ -27,21 +27,21 @@
 	</button>
 
 	<script type="text/javascript">
-		function GetRequest() {
-            var url = location.search; //获取url中"?"符后的字串   
-            var theRequest = new Object();
-            if (url.indexOf("?") != -1) {
-                var str = url.substr(1);
-                strs = str.split("&");
-                for (var i = 0; i < strs.length; i++) {
-                    theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
-                }
-            }
-            return theRequest;
-        }
+		// function GetRequest() {
+  //           var url = location.search; //获取url中"?"符后的字串   
+  //           var theRequest = new Object();
+  //           if (url.indexOf("?") != -1) {
+  //               var str = url.substr(1);
+  //               strs = str.split("&");
+  //               for (var i = 0; i < strs.length; i++) {
+  //                   theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+  //               }
+  //           }
+  //           return theRequest;
+  //       }
 
-        var Request = new Object();
-        Request = GetRequest();
+  //       var Request = new Object();
+  //       Request = GetRequest();
         // var targetUser = JSON.parse(Request.targetUser);
         // alert("targetUser:"+targetUser.nickname)
         // alert("nickname:"+nickname)
@@ -55,7 +55,7 @@
   //       	document.getElementById('yes_btn').style.visibility="visible"; 
   //       	document.getElementById('no_btn').style.visibility="visible"; 
   //       }
-
+alert(1)
 		window.onerror = function(err) {
 			log('window.onerror: ' + err)
 		}
@@ -83,7 +83,6 @@
 			var yes_btn = document.getElementById('yes_btn')
 			yes_btn.onclick = function(e) {
 				e.preventDefault()
-				alert(1)
 				var data = {"fn":"sendMessageCard","message":"咱们俩个是老乡哦","chatUsername":"qhc5xch9wgjm8h3q"}
 				bridge.send(data, function(responseData) {
 				})
