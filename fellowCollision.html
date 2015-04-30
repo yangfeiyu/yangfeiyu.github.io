@@ -183,17 +183,20 @@
 
 
 		function leftButtonAction(responseData){
-			alert(responseData)
-			// var responseData = JSON.parse(responseData)
-			// alert(responseData["text"])
-			// var data = {"fn":"dismissPopupTextView"}
-			// WebViewJavascriptBridge.send(data,function(responseData) {
-			// })
+			var data = {"fn":"dismissPopupTextView"}
+			WebViewJavascriptBridge.send(data,function(responseData) {
+			})
+			var responseData = JSON.parse(responseData)
+			alert(responseData["text"])
+			
 		}
 		function rightButtonAction(responseData){
-			alert(responseData)
-			// var responseData = JSON.parse(responseData)
-			// alert("发送:"+responseData["text"])
+			var data = {"fn":"dismissPopupTextView"}
+			WebViewJavascriptBridge.send(data,function(responseData) {
+			})
+			var responseData = JSON.parse(responseData)
+			alert("发送:"+responseData["text"])
+
 		}
 		
 		
