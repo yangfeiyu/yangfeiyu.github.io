@@ -83,7 +83,7 @@
 			var yes_btn = document.getElementById('yes_btn')
 			yes_btn.onclick = function(e) {
 				e.preventDefault()
-				var data = {"fn":"sendMessageCard","message":"咱们俩个是老乡哦","chatUsername":targetUser.chatUsername}
+				var data = {"fn":"sendMessageCard","message":"咱们俩个是老乡哦","chatUsername":"qhc5xch9wgjm8h3q"}
 				bridge.send(data, function(responseData) {
 				})
 			}
@@ -91,7 +91,7 @@
 			var no_btn = document.getElementById('no_btn')
 			no_btn.onclick = function(e) {
 				e.preventDefault()
-				var data = {"fn":"sendMessageCard","message":"我根本不认识你","chatUsername":targetUser.chatUsername}
+				var data = {"fn":"sendMessageCard","message":"我根本不认识你","chatUsername":"qhc5xch9wgjm8h3q"}
 				bridge.send(data, function(responseData) {
 				})
 			}
