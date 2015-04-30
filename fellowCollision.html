@@ -181,7 +181,7 @@
 			// alert("发送:"+responseData["text"])
 		}
 
-		function stateChangedCallback(state) {
+		function stateChangedCallback(responseData) {
 			alert(1)
 			var play_state = document.getElementById('play_state')
 			play_state.innerHTML = "播放状态：" + responseData["state"]
