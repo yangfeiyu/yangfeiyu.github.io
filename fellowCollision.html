@@ -183,18 +183,11 @@
 
 
 		function leftButtonAction(responseData){
-			var data = {"fn":"dismissPopupTextView"}
-			WebViewJavascriptBridge.send(data,function(responseData) {
-			})
 			alert(responseData["text"])
 			
 		}
 		function rightButtonAction(responseData){
-			var data = {"fn":"dismissPopupTextView"}
-			WebViewJavascriptBridge.send(data,function(responseData) {
-			})
 			alert("发送:"+responseData["text"])
-
 		}
 		
 		
