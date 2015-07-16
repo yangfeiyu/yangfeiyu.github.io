@@ -1,0 +1,219 @@
+<!DOCTYPE>
+<html>
+<head>
+	<title>用户卡片</title>
+	<meta charset="utf-8">
+
+</head>
+<body>
+	<div 
+		style="width:300px;height:200px;background:red;font-size:20px"
+	>
+		用户信息aaa1
+	</div>
+
+	<button 
+		style="width:50px;height:50px;background:green;position:absolute;top:230px;left:0px;font-size:15px"
+		id="play_btn"
+	>
+		播放
+	</button>
+	<button 
+		style="width:50px;height:50px;background:green;position:absolute;top:230px;left:50px;font-size:15px"
+		id="pause_btn"
+	>
+		暂停
+	</button>
+	<button 
+		style="width:50px;height:50px;background:green;position:absolute;top:230px;left:100px;font-size:15px"
+		id="stop_btn"
+	>
+		停止
+	</button>
+	<button 
+		style="width:150px;height:50px;background:pink;position:absolute;top:230px;left:160px;font-size:12px"
+		id="play_state"
+	>
+		播放状态：
+	</button>
+
+	<button 
+		style="width:50px;height:50px;background:green;position:absolute;top:290px;left:0;font-size:15px"
+		id="start_record"
+	>
+		录音
+	</button>
+	<button 
+		style="width:50px;height:50px;background:green;position:absolute;top:290px;left:50px;font-size:15px"
+		id="cancel_record"
+	>
+		取消
+	</button>
+	<button 
+		style="width:50px;height:50px;background:green;position:absolute;top:290px;left:100px;font-size:15px"
+		id="finish_record"
+	>
+		完成
+	</button>
+	<button 
+		style="width:150px;height:50px;background:green;position:absolute;top:290px;left:160px;font-size:15px"
+		id="textview"
+	>
+		弹出文本框
+	</button>
+	<button 
+		style="width:150px;height:50px;background:yellow;position:absolute;top:350px;left:0;font-size:15px"
+		id="send_meet_card"
+	>
+		发送老乡碰老乡卡片
+	</button>
+	<button 
+		style="width:150px;height:50px;background:pink;position:absolute;top:410px;left:0;font-size:15px"
+		id="toast"
+	>
+		弹出Toast
+	</button>
+	<button 
+		style="width:150px;height:50px;background:yellow;position:absolute;top:350px;left:160;font-size:15px"
+		id="chatUser"
+	>
+		跳转到用户聊天页面
+	</button>
+
+	<script type="text/javascript">
+		window.onerror = function(err) {
+			log('window.onerror: ' + err)
+		}
+		
+		function connectWebViewJavascriptBridge(callback) {
+			if (window.WebViewJavascriptBridge) {
+				callback(WebViewJavascriptBridge)
+			} else {
+				document.addEventListener('WebViewJavascriptBridgeReady', function() {
+					callback(WebViewJavascriptBridge)
+				}, false)
+			}
+		}
+		
+		connectWebViewJavascriptBridge(function(bridge) {
+			var uniqueId = 1
+			function log(message, data) {
+				var log = document.getElementById('log')
+				var el = document.createElement('div')
+				el.className = 'logLine'
+				el.innerHTML = uniqueId++ + '. ' + message + ':<br/>' + JSON.stringify(data)
+				if (log.children.length) { log.insertBefore(el, log.children[0]) }
+				else { log.appendChild(el) }
+			}
+			bridge.init(function(message, responseCallback) {
+				log('JS got a message', message)
+				var data = { 'Javascript Responds':'Wee!' }
+				log('JS responding with', data)
+				responseCallback(data)
+			})
+
+
+			var play_btn = document.getElementById('play_btn')
+			play_btn.onclick = function(e) {
+				e.preventDefault()
+				var data = {"fn":"mediaPlay","requiredVoice":0,"url":"http://iorcas-upload.b0.upaiyun.com/b565ab9abeb37a6d4c1f657c46776a12e423b8bde9bfbfd7e9409b23b23aed91.aac","stateChangedCallback":"stateChangedCallback"}
+				bridge.send(data, function(responseData) {
+				})
+			}
+
+			var pause_btn = document.getElementById('pause_btn')
+			pause_btn.onclick = function(e) {
+				e.preventDefault()
+				var data = {"fn":"mediaPause"}
+				bridge.send(data, function(responseData) {
+				})
+			}
+
+			var stop_btn = document.getElementById('stop_btn')
+			stop_btn.onclick = function(e) {
+				e.preventDefault()
+				var data = {"fn":"mediaStop"}
+				bridge.send(data, function(responseData) {
+				})
+			}
+
+			var textview = document.getElementById('textview')
+			textview.onclick = function(e) {
+				e.preventDefault()
+				var data = {"fn":"showPopupTextView","title":"写小纸条喽","leftButtonText":"狠心拒绝","rightButtonText":"立即发送","leftButtonAction":"leftButtonAction","rightButtonAction":"rightButtonAction"}
+				bridge.send(data, function(responseData) {
+				})
+			}
+
+			var start_record = document.getElementById('start_record')
+			start_record.onclick = function(e) {
+				e.preventDefault()
+				var data = {"fn":"startRecord"}
+				bridge.send(data, function(responseData) {
+				})
+			}
+
+			var cancel_record = document.getElementById('cancel_record')
+			cancel_record.onclick = function(e) {
+				e.preventDefault()
+				var data = {"fn":"cancelRecord"}
+				bridge.send(data, function(responseData) {
+				})
+			}
+
+			var voiceUri;
+			var finish_record = document.getElementById('finish_record')
+			finish_record.onclick = function(e) {
+				e.preventDefault()
+				var data = {"fn":"finishRecord"}
+				bridge.send(data, function(responseData) {
+					var responseData = JSON.parse(responseData)
+					voiceUri = responseData["url"];
+					alert("录音url为：" + voiceUri)
+				})
+			}
+			
+			var send_meet_card = document.getElementById('send_meet_card')
+			send_meet_card.onclick = function(e) {
+				e.preventDefault()
+				var data = {"fn":"sendMeetCard","targetUser":{"chatUsername":"qhc5xch9wgjm8h3q"},"transText":"hahaha","transAudio":voiceUri}
+				bridge.send(data, function(responseData) {
+					alert("发送成功！")
+				})
+			}
+
+			var toast = document.getElementById('toast')
+			toast.onclick = function(e) {
+				e.preventDefault()
+				var data = {"fn":"showToast","message":"你变猪头了"}
+				bridge.send(data, function(responseData) {
+				})
+			}
+
+			var chatUser = document.getElementById('chatUser')
+			chatUser.onclick = function(e) {
+				e.preventDefault()
+				var data = {"fn":"chatUser","chatUsername":"qhc5xch9wgjm8h3q"}
+				bridge.send(data, function(responseData) {
+				})
+			}
+		})
+
+
+		function leftButtonAction(responseData){
+			// alert(responseData["text"])
+			
+		}
+		function rightButtonAction(responseData){
+			// alert("发送:"+responseData["text"])
+		}
+
+		function stateChangedCallback(responseData) {
+			var play_state = document.getElementById('play_state')
+			play_state.innerHTML = "播放状态：" + responseData["state"]
+		}
+		
+		
+	</script>
+</body>
+</html>
