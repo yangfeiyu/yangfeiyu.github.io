@@ -22,7 +22,14 @@
 	
 
 	<script type="text/javascript">
-		
+		function onRuntuInit(){
+			var change_btn = document.getElementById('change_btn')
+			var shoot_btn = document.getElementById('shoot_btn')
+
+			change_btn.onclick = function() {
+				window.runtuNative.backToRuntu()
+			}
+		}
 		
 		
 	</script>
