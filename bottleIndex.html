@@ -35,14 +35,15 @@
             return theRequest;
         }
 
-        var Request = new Object();
-        Request = GetRequest();
-        var r = JSON.parse(Request);
+        window.onload = function () {
 
-        // alert("r:"+r);
-        // alert("qid:"+r['qid']+" selectedItemIndex:"+r['selectedItemIndex']);
-        var title = document.getElementsByTagName("h3")[0]
-        title.innerHTML =  r['content']
+        	var Request = new Object();
+	        Request = GetRequest();
+	        var r = JSON.parse(Request);
+
+	        var title = document.getElementsByTagName("h3")[0]
+	        title.innerHTML =  r['content']
+        }
 
 		function onRuntuInit(){
 			var change_btn = document.getElementById('change_btn')
