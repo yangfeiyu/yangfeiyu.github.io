@@ -47,24 +47,23 @@
    //      }
 
 		function onRuntuInit(){
-			alert(1)
 			var change_btn = document.getElementById('change_btn')
 			var shoot_btn = document.getElementById('shoot_btn')
 
 			shoot_btn.onclick = function() {
-				// window.runtuNative.sendMsg({
-				// 	"chatUsername":"vpk3xbcvvcichmry",
-				// 	"type":"TXT",
-				// 	"message":"方言来一发【来自漂流瓶】",
-				// 	"targetType":"USER",
-				// 	"ext":{
-				// 		"InteractionType":"DRIFTBOTTLE",
-				// 		"content":{
-				// 			"msgHidden":true
-				// 		}
-				// 	}
-				// });
-				window.runtuNative.backToRuntu();
+				window.runtuNative.sendMsg({
+					"chatUsername":"vpk3xbcvvcichmry",
+					"type":"TXT",
+					"message":"方言来一发【来自漂流瓶】",
+					"targetType":"USER",
+					"ext":{
+						"InteractionType":"DRIFTBOTTLE",
+						"content":{
+							"msgHidden":true
+						}
+					}
+				});
+				// window.runtuNative.backToRuntu();
 			}
 		}
 		
