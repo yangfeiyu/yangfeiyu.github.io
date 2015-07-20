@@ -24,34 +24,45 @@
 	<script type="text/javascript">
 		
 
-        window.onload = function () {
-        	function GetRequest() {
-	            var url = location.search; //获取url中"?"符后的字串   
-	            var theRequest = new Object();
-	            if (url.indexOf("?") != -1) {
-	                var str = url.substr(1);
-	                strs = str.split("&");
-	                for (var i = 0; i < strs.length; i++) {
-	                    theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
-	                }
-	            }
-	            return theRequest;
-	        }
-			var Request = new Object();
-	        Request = GetRequest();
+   //      window.onload = function () {
+   //      	function GetRequest() {
+	  //           var url = location.search; //获取url中"?"符后的字串   
+	  //           var theRequest = new Object();
+	  //           if (url.indexOf("?") != -1) {
+	  //               var str = url.substr(1);
+	  //               strs = str.split("&");
+	  //               for (var i = 0; i < strs.length; i++) {
+	  //                   theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+	  //               }
+	  //           }
+	  //           return theRequest;
+	  //       }
+			// var Request = new Object();
+	  //       Request = GetRequest();
 
-	        var title = document.getElementsByTagName("h3")[0]
-	        title.innerHTML =  Request['content']
-	        console.log(Request)
+	  //       var title = document.getElementsByTagName("h3")[0]
+	  //       title.innerHTML =  Request['content']
+	  //       console.log(Request)
         	
-        }
+   //      }
 
 		function onRuntuInit(){
 			var change_btn = document.getElementById('change_btn')
 			var shoot_btn = document.getElementById('shoot_btn')
 
 			shoot_btn.onclick = function() {
-				window.runtuNative.backToRuntu()
+				window.runtuNative.ChatMsgSender({
+					"chatUsername":"vpk3xbcvvcichmry",
+					"type":"TXT",
+					"message":"方言来一发【来自漂流瓶】",
+					"targetType":"USER",
+					"ext":{
+						"InteractionType":"DRIFTBOTTLE",
+						"content":{
+							"msgHidden":true
+						}
+					}
+				});
 			}
 		}
 		
