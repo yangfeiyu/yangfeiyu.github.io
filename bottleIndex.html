@@ -59,16 +59,13 @@
 					"message":"方言来一发【来自漂流瓶】",
 					"targetType":"USER",
 					"ext":{
-						"InteractionType":"DRIFTBOTTLE",
-						"content":{
-							"msgHidden":true
-						}
+						"InteractionType":"ARROW",
 					}
 				});
-				// window.runtuNative.driftBottle({
-				// 	"successCallBack":"success",
-				// 	"failedCallBack":"failed"
-				// })
+				window.runtuNative.driftBottle({
+					"successCallBack":"success",
+					"failedCallBack":"failed"
+				})
 			}
 			change_btn.onclick = function() {
 				window.runtuNative.chatUser({
