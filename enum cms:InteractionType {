@@ -1,0 +1,42 @@
+enum cms:InteractionType {
+  MEET,        // 老乡摇一摇
+  TRUTH,       // 真心话
+  DIALECT,     // 方言挑战
+  CHILDHOOD,   // 童年趣事
+  DRIFTBOTTLE  // 漂流瓶（新增）
+}
+
+
+RuntuNative新增接口
+1. 跳转到指定用户聊天页面
+window.runtuNative.chatUser({
+	"chatUsername":"7jvg1ajpb1lzlm9i",
+	"isGroup":false
+})
+2. 扔漂流瓶接口
+window.runtuNative.driftBottle({
+	"successCallBack":"success",
+	"failedCallBack":"failed"
+})
+
+
+服务端新增接口
+1.扔漂流瓶
+req:
+cms:driftBottle
+
+resp：
+{
+  "var" : {
+    "driftBottleArray" : [${bottle:DriftBottle}]
+  }
+}
+
+struct global:DriftBottle {
+  "fromUser"    :  ${fromUser:User{Simplify}}, 
+  "toUser"      :  ${toUser:User{Simplify}},              
+  "messageId"   :  ${messageId{String}},            
+  "messageText" :  ${messageText{String}},                  
+  "timestamp"   :  ${timestamp{String}},             
+}
+
