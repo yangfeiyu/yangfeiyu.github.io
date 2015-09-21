@@ -20,9 +20,7 @@
 	<script type="text/javascript" src="http://www.1230g.com/js/zepto.min.js"></script>
 	<script type="text/javascript" src="http://www.1230g.com/testJNA/ZMDJComApi.js"></script>
 	<script>
-		$(document).ready(function(){
-			// todo: 放到onNativeInit方法中
-			function onNativeInit() {
+		function onNativeInit() {
 				$("#getLocation").on("click",function(){
 					var data={};
 					data['type']="getLocation";
@@ -33,6 +31,9 @@
 					})
 				});
 			}
+		$(document).ready(function(){
+			// todo: 放到onNativeInit方法中
+			
 		});
 	</script>
 </body>
