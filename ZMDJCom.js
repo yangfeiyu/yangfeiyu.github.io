@@ -25,13 +25,14 @@ ZmdjCom.Kernel = (function()
 	{
 		//message={type:"",data:"",callbackid:""}
 		// todo: 修改message结构
+		alert("haha")
 		if (responseCallback) 
 		{
 			var callbackId = 'ZmdjCom_'+(uniqueId++)+'_'+new Date().getTime();
 			responseCallbacks[callbackId] = responseCallback;
 			message['callbackId'] = callbackId;
 		}
-		alert("haha")
+		message['callbackId'] = "1234444";
 
 		ZmdjNaCom.jsGetData(message);
 	};
