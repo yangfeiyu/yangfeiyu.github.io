@@ -23,6 +23,7 @@
 	<script>
 		$(document).ready(function(){
 			$("#getLocation").on("click",function(){
+				alert(ZmdjCom.Bridge)
 				ZmdjCom.Bridge.jsGetData("getLocation",function(res){
 					$("#location").text(res);
 				})
