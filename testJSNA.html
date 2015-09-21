@@ -26,7 +26,7 @@
 				data['type']="getLocation";
 				data['data']={};
 				data['data']['name']="testpage";
-				ZmdjCom.Bridge.jsGetData(data,responseCallback=function(res){
+				ZmdjCom.Bridge.jsGetData(data,function(res){
 					$("#location").text(res);
 				})
 			});
