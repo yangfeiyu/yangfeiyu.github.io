@@ -1,0 +1,32 @@
+<!doctype>
+<html>
+<head>
+	<title>测试JSNA通信</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<!-- 右上角放一个native的分享按钮，测试na调用js获取分享数据 -->
+	<h1>测试js和na通信</h1>
+	<div>
+		<div class="title">js调用na</div>
+		<button id="getLocation">获取地理位置</button>
+		<button id="share">调起分享</button>
+		<div>
+			Location内容如下：
+			<span id="location">
+			</span>
+		</div>
+	</div>
+	<script type="text/javascript" src="http://www.1230g.com/js/zepto.min.js"></script>
+	<script type="text/javascript" src="http://www.1230g.com/testJNA/ZMDJComApi.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#getLocation").on("click",function(){
+				ZmdjCom.Bridge.jsGetData("getLocation",function(res){
+					$("#location").text(res);
+				})
+			});
+		});
+	</script>
+</body>
+</html>
