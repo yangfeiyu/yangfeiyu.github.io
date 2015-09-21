@@ -21,20 +21,16 @@
 	<script type="text/javascript" src="http://www.1230g.com/testJNA/ZMDJComApi.js"></script>
 	<script>
 		function onNativeInit() {
-				$("#getLocation").on("click",function(){
-					var data={};
-					data['type']="getLocation";
-					data['data']={};
-					data['data']['name']="testpage";
-					ZmdjCom.Bridge.jsGetData(JSON.stringify(data),function(res){
-						$("#location").text(res);
-					})
-				});
-			}
-		$(document).ready(function(){
-			// todo: 放到onNativeInit方法中
-			
-		});
+			$("#getLocation").on("click",function(){
+				var data={};
+				data['type']="getLocation";
+				data['data']={};
+				data['data']['name']="testpage";
+				ZmdjCom.Bridge.jsGetData(JSON.stringify(data),function(res){
+					$("#location").text(res);
+				})
+			});
+		}
 	</script>
 </body>
 </html>
