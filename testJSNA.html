@@ -22,11 +22,20 @@
 	<!-- <script type="text/javascript" src="./ZMDJCom.js"></script> -->
 	<script>
 		$(document).ready(function(){
-			$("#getLocation").on("click",function(){
-				ZmdjCom.Bridge.jsGetData("getLocation",function(res){
-					$("#location").text(res);
-				})
-			});
+			// todo: 放到onNativeInit方法中
+			function onNativeInit() {
+				$("#getLocation").on("click",function(){
+					ZmdjCom.Bridge.jsGetData("getLocation",function(res){
+						$("#location").text(res);
+					})
+				});
+			}
+			
+			// $("#getLocation").on("click",function(){
+			// 	ZmdjCom.Bridge.jsGetData("getLocation",function(res){
+			// 		$("#location").text(res);
+			// 	})
+			// });
 		});
 	</script>
 </body>
