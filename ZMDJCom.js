@@ -23,17 +23,15 @@ ZmdjCom.Kernel = (function()
 	//组件调用native接口
 	function _jsGetData(message, responseCallback) 
 	{
+		alert(responseCallback);
 		//message={type:"",data:"",callbackid:""}
-		// todo: 修改message结构
-		alert("haha")
 		if (responseCallback) 
 		{
 			var callbackId = 'ZmdjCom_'+(uniqueId++)+'_'+new Date().getTime();
 			responseCallbacks[callbackId] = responseCallback;
 			message['callbackId'] = callbackId;
 		}
-		message['callbackId'] = "1234444";
-
+		alert(JSON.stringify(message));
 		ZmdjNaCom.jsGetData(message);
 	};
 
