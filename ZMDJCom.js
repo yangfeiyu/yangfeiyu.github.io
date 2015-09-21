@@ -30,6 +30,7 @@ ZmdjCom.Kernel = (function()
 			responseCallbacks[callbackId] = responseCallback;
 			message['callbackId'] = callbackId;
 		}
+		alert(ZmdjNaCom.jsGetData)
 		ZmdjNaCom.jsGetData(message);
 	};
 
