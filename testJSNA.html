@@ -23,18 +23,8 @@
 				alert("read")
 		function onNativeInit() {
 				alert("read1")
-
-
-				$(document).ready(function(){
-					console.log(ZmdjComApi)
-					alert("html")
-				}
-				window.onload=function(){
-					console.log(ZmdjComApi)
-					alert("onload")
-				}
 			$("#getLocation").on("click",function(){
-
+				alert("read2")
 				var data={};
 				data['type']="getLocation";
 				data['data']={};
@@ -43,6 +33,17 @@
 					$("#location").text(res);
 				})
 			});
+		}
+
+
+
+		$(document).ready(function(){
+			console.log(ZmdjComApi)
+			alert("html")
+		}
+		window.onload=function(){
+			console.log(ZmdjComApi)
+			alert("onload")
 		}
 		
 	</script>
