@@ -31,7 +31,7 @@ ZmdjCom.Kernel = (function()
 			responseCallbacks[callbackId] = responseCallback;
 			message['callbackId'] = callbackId;
 		}
-		alert("haha"+ message['callbackId'])
+		alert("haha")
 
 		ZmdjNaCom.jsGetData(message);
 	};
