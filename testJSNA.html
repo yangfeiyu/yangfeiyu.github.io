@@ -21,7 +21,19 @@
 	<script type="text/javascript" src="http://www.1230g.com/testjna/ZMDJComApi.js"></script>
 	<script>
 		function onNativeInit() {
+					console.log("read")
+
+
+				$(document).ready(function(){
+					console.log(ZmdjComApi)
+					console.log("html")
+				}
+				window.onload=function(){
+					console.log(ZmdjComApi)
+					console.log("onload")
+				}
 			$("#getLocation").on("click",function(){
+
 				var data={};
 				data['type']="getLocation";
 				data['data']={};
@@ -30,14 +42,6 @@
 					$("#location").text(res);
 				})
 			});
-			$(document).ready(function(){
-				console.log(ZmdjComApi)
-				console.log("html")
-			}
-			window.onload=function(){
-				console.log(ZmdjComApi)
-				console.log("onload")
-			}
 		}
 		
 	</script>
