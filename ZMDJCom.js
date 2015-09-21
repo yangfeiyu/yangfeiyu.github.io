@@ -31,13 +31,13 @@ ZmdjCom.Kernel = (function()
 			responseCallbacks[callbackId] = responseCallback;
 			message['callbackId'] = callbackId;
 		}
-		alert(message['callbackId'])
+		alert("haha"+ message['callbackId'])
 
 		ZmdjNaCom.jsGetData(message);
 	};
 
 	// native调JS接口
-	function _naGetData(messageJSON) 
+	function _naGetData(messageJSON)  
 	{
 		var message = JSON.parse(messageJSON);
 		//message={type:"",data:"",callbackid:"",responseid:""}
