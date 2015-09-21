@@ -24,13 +24,13 @@ ZmdjCom.Kernel = (function()
 	function _jsGetData(message, responseCallback) 
 	{
 		//message={type:"",data:"",callbackid:""}
+		// todo: 修改message结构
 		if (responseCallback) 
 		{
 			var callbackId = 'ZmdjCom_'+(uniqueId++)+'_'+new Date().getTime();
 			responseCallbacks[callbackId] = responseCallback;
 			message['callbackId'] = callbackId;
 		}
-		alert(ZmdjNaCom.jsGetData)
 		ZmdjNaCom.jsGetData(message);
 	};
 
