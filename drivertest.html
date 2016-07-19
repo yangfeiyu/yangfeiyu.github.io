@@ -3,13 +3,19 @@
 <head>
 	<title>测试JSNA通信111</title>
 	<meta charset="utf-8">
+	<div id="btn">点我</div>
 </head>
 <body>
 	<h1>WKWebView</h1>
 	<script>
 		window.onload = function () {
-			var data = {"type":"back", "data":"helloWorld"}
-        	window.webkit.messageHandlers.notification.postMessage({body: data});
+			
+
+        	var btn = document.getElementById('btn')
+			btn.onclick = function(e) {
+				var data = {"type":"back", "data":"helloWorld"}
+        		window.webkit.messageHandlers.notification.postMessage({body: data});
+			}
         }
 		
 	</script>
