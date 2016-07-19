@@ -1,14 +1,15 @@
 <!doctype>
 <html>
 <head>
-	<title>测试JSNA通信</title>
+	<title>测试JSNA通信111</title>
 	<meta charset="utf-8">
 </head>
 <body>
 	<h1>WKWebView</h1>
 	<script>
 		window.onload = function () {
-        	window.webkit.messageHandlers.notification.postMessage({body: "杨飞宇真帅"});
+			var data = {"type"："back", "data":"helloWorld"}
+        	window.webkit.messageHandlers.notification.postMessage({body: data});
         }
 		
 	</script>
