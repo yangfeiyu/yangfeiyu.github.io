@@ -13,8 +13,8 @@
 
         	var btn = document.getElementById('btn')
 			btn.onclick = function(e) {
-				// var data = {"type":"back", "data":"helloWorld"}
-        		// window.webkit.messageHandlers.notification.postMessage(data);
+				var data = {"type":"GET_TOKEN", "data":"helloWorld"}
+        		window.webkit.messageHandlers.notification.postMessage(data);
         		
 			}
 
