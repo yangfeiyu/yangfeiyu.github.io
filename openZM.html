@@ -21,7 +21,7 @@ window.onload = function() {
   }
 
 $( "#btn" ).on( "click", function() {
-  openIos('baiduboxapp://', function(t){
+  openIos('itms-apps://', function(t){
       if(t){
         alert('timeout or no baidu APP');
       }else{
@@ -31,7 +31,7 @@ $( "#btn" ).on( "click", function() {
 });
 
   $('#btn2').on("click", function(){
-    openIos('baiduboxapp://', function(t){
+    openIos('itms-apps://', function(t){
       if(t){
         info('timeout or no baidu APP2');
         alert('timeout or no baidu APP2');
@@ -42,7 +42,7 @@ $( "#btn" ).on( "click", function() {
     });
   });
   $('#btninfo').on("click", function(){
-    openIos('baiduboxapp://', function(t){
+    openIos('itms-apps://', function(t){
       if(t){
         info('timeout or no baidu APP');
       }else{
