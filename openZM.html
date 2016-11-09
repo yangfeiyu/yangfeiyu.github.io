@@ -11,15 +11,16 @@
 
 
 <script type="text/javascript">
-		$(function(){
-		  var $info = $('#info');
-		  function info(msg){
-		    var p = $('<p>'+msg+'</p>');
-		    $info.append(p);
-		 }
+
+window.onload = function() {
+  var $info = $('#info');
+  function info(msg){
+    var p = $('<p>'+msg+'</p>');
+    $info.append(p);
+  }
 
   $('#btn').on('click', function(){
-    openIos('itms-apps://', function(t){
+    openIos('baiduboxapp://', function(t){
       if(t){
         alert('timeout or no baidu APP');
       }else{
@@ -27,9 +28,8 @@
       }
     });
   });
-
   $('#btn2').on('click', function(){
-    openIos('itms-apps://', function(t){
+    openIos('baiduboxapp://', function(t){
       if(t){
         info('timeout or no baidu APP2');
         alert('timeout or no baidu APP2');
@@ -39,9 +39,8 @@
       }
     });
   });
-
   $('#btninfo').on('click', function(){
-    openIos('itms-apps://', function(t){
+    openIos('baiduboxapp://', function(t){
       if(t){
         info('timeout or no baidu APP');
       }else{
@@ -49,8 +48,8 @@
       }
     });
   });
+}
 
-});
 
 function openIos(url, callback) {
 	    if (!url) {
