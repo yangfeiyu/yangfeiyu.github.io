@@ -5,20 +5,23 @@
     <title>打开应用</title>
     
     <script>
-        window.onload = function aa() {
-            var the_href="www.baidu.com";//获得下载链接
-            window.location.href="芝麻掌柜";//打开某手机上的某个app应用
+        function aa() {
+            var the_href="http://www.baidu.com";//获得下载链接
+            window.location.href="m://zhima";//打开某手机上的某个app应用
             setTimeout(function(){
-                window.location.href=the_href;//如果超时就跳转到app下载页
+                window.location.href = the_href;//如果超时就跳转到app下载页
             },500);
         }
+
+
     </script>
 </head>
 <body>
 
     <div style="width: 2000px; height: 100px; background: red;">
 
-        <span>你好啊</span>
+        <span onclick="aa()">你好啊</span>
+        <a href="m://zhima">打开链接</a>
     </div>
 
 </body>
