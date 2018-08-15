@@ -1,0 +1,87 @@
+<body>
+    <script src="http://s0.meituan.net/bs/mt-login-component/v1.0.4/index.min.js"></script>
+    <div id="iLoginComp"><!-- id 可以在下面配置自定义 -->
+        
+    </div>
+    <script>
+        const config = {
+            // --------------------必填项----------------------------
+            // 以下3个风控参数必须配置
+            // 参见 https://123.sankuai.com/km/page/28122598 填写完整 有问题可以联系@limengyao
+            risk_platform: 1,
+            risk_partner: 1,
+            risk_app: -1,
+            
+            // --------------------选填项----------------------------
+            // 验证码短信文案模板定制  默认0
+            // 参见：https://123.sankuai.com/km/page/28285769
+            // 需要自定义，请联系 @lirui15或者@turui配置
+            // risk_smsTemplateId: 0,
+            // risk_smsPrefixId: 0,
+            
+            // 登录业务类型 0非活动（默认）、1活动
+            // loginSource: 0,
+            
+            // 活动类型可以联系limengyao配置登录不出2次验证
+            // 风控分配的活动平台ID 如果loginSource为1则必填
+            // 参见：https://km.sankuai.com/page/28122598
+            // campaignPlatform: 18,
+            
+            // 活动id
+            // allCampaignId: 0,
+            
+            
+            // uuid 如果没有配置会尝试从cookie的iuuid字段取，如果依然没有则生成一个并存入cookie,key值为iuuid
+            uuid: '',
+            
+            // token只分线上线下，env有效值为 'dev'， 'test'（dev、test环境，线下token）和空字符串''(prod环境，线上token)
+            env: 'dev',
+            
+            // 登录成功后，cookie中token的key值，有效值1和2，1表示token的key值为'token'，2表示token的key值为'mt_c_token',默认值为1
+            // tokenVersion: 1,
+            
+            // 组件最外层id 默认：iLoginComp
+            componentId: 'iLoginComp',
+            
+            // ui配置项
+            uiConfig: {
+                extraClass: '',// 最外层wrapper的class, 覆盖默认样式使用
+                loginBtnText: '登录', // 登录按钮文案
+                codePlaceholder: '请输入短信验证码', //验证码placeholder
+                phoneNumPlaceholder: '请输入手机号', // 手机号placeholder
+                sendCodeText: '发送验证码', // 发送验证码按钮文案
+                sendCodePos: 1, // 发送验证码位置，有效值1和2，1表示上面，2表示下面
+                showCancel: false, // 是否显示取消按钮，一般用来配合弹窗使用，需要自己改写样式
+                cancelBtnText: '取消' // 取消按钮文案，仅当 uiConfig.showCancel === true 时生效
+            }
+        }
+    
+    // 5个事件 不需要的可以不写
+    iLoginComp.session.on('compInited', function () {
+                          console.log('登录组件初始化完成');
+                          });
+                          iLoginComp.session.on('sendSmscodeClick', function () {
+                                                console.log('<有效点击>发送验证码按钮');
+                                                });
+                                                iLoginComp.session.on('loginClick', function () {
+                                                                      console.log('<有效点击>登录按钮');
+                                                                      document.getElementById('codeInput').blur();
+                                                                      });
+                                                                      iLoginComp.session.on('cancelClick', function () {
+                                                                                            // 仅当 uiConfig.showCancel === true 时生效
+                                                                                            console.log('点击取消按钮');
+                                                                                            });
+                                                                                            iLoginComp.session.on('loginComplete', function (info) {
+                                                                                                                  if (info.user) {
+                                                                                                                  alert('登录成功！');
+                                                                                                                  console.log(JSON.stringify(info))
+                                                                                                                  // 存储登录信息、关闭弹窗、跳转页面等等
+                                                                                                                  // 登录成功后，iLoginComp.session所有事件都会被清空。
+                                                                                                                  } else {
+                                                                                                                  console.log('登录失败，请稍后重试')
+                                                                                                                  }
+                                                                                                                  });
+                                                                                                                  //初始化登录组件
+                                                                                                                  iLoginComp.init(config);
+        </script>
+</body>
